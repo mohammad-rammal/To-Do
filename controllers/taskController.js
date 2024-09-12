@@ -12,7 +12,13 @@ const getAllTasks = asyncHandler(async (req, res) => {
 
     res.status(200).json({
         status: 'success',
+        length: allTasks.length,
+
         allTasks,
+        // length: allTasks.length,
+        // data: {
+        //     allTasks,
+        // },
     });
 });
 

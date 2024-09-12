@@ -1,40 +1,30 @@
 const express = require('express');
 const morgan = require('morgan');
-const connectDB = require('./db/connect');
-require('dotenv').config();
-
 const {Date} = require('./middlewares/Date');
 const taskRouter = require('./routes/taskRouter');
 const {notFound, errorHandler} = require('./middlewares/Error');
+const {notFoundPage} = require('./middlewares/notFoundPage');
 
 const app = express();
 
-// Date
+// Middleware: Date
 app.use(Date);
 
-// Logger
+// Middleware: Logger
 app.use(morgan('dev'));
 
+// Serve static files
 app.use(express.static('./public'));
 
-// Middleware (get data from req.body)
+// Middleware: Parse JSON
 app.use(express.json());
 
 // Routes
 app.use('/api/v1/task', taskRouter);
+// app.use(notFoundPage); 
 
-const port = 5000;
-const start = async () => {
-    try {
-        await connectDB(process.env.MONGODB_URL);
-        app.listen(port, console.log(`Server is running on port ${port}...➡️‍`));
-    } catch (error) {
-        console.log(error);
-    }
-};
-
+// Middleware: Error handling
 app.use(notFound);
-
 app.use(errorHandler);
 
-start();
+module.exports = app; 
