@@ -1,5 +1,6 @@
 const asyncHandler = require('express-async-handler');
 const {Task, validateCreateTask, validateUpdateTask} = require('../models/taskModel');
+const {createCustomError} = require('../errors/custom-error');
 
 /****************************
  *  @desc    Get All Task
@@ -28,17 +29,20 @@ const getAllTasks = asyncHandler(async (req, res) => {
  *  @method  GET
  *  @access  public
  ****************************/
-const getTask = asyncHandler(async (req, res) => {
+const getTask = asyncHandler(async (req, res, next) => {
     const taskID = req.params.id;
     const singleTask = await Task.findById(taskID).select('-__v');
 
+    // If the task is not found, call next with the custom error
     if (!singleTask) {
-        return res.status(404).json({
-            status: 'fail',
-            message: `Task not found for ID: ${taskID}`,
-        });
+        return next(createCustomError(`Task not found for ID: ${taskID}`, 404));
+        // return res.status(404).json({
+        //     status: 'fail',
+        //     message: `Task not found for ID: ${taskID}`,
+        // });
     }
 
+    // If task exists, return the task details
     res.status(200).json({
         status: 'success',
         singleTask,
