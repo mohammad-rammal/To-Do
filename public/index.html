@@ -18,7 +18,7 @@
     <meta name="description" content="Task Manager helps you organize and prioritize your tasks effortlessly.">
     <meta property="og:image"
         content="https://res.cloudinary.com/dftxzx2zc/image/upload/v1726163289/fndfwhb2sufa1gk2bkhi.jpg">
-    <!-- <meta property="og:url" content="https://yourwebsite.com/your-page-url"> -->
+    <meta property="og:url" content="https://to-do-ccd4.onrender.com">
     <meta property="og:type" content="website">
 
     <!-- normalize css -->
@@ -29,19 +29,35 @@
 </head>
 
 <body>
-    <form class="task-form">
-        <h4>To-Do List</h4>
-        <div class="form-control">
-            <input type="text" name="name" class="task-input" placeholder="e.g. Write homework" />
-            <button type="submit" class="btn submit-btn">Enter</button>
-        </div>
-        <div class="form-alert"></div>
-    </form>
+    <div class="main-section">
+        <form class="task-form">
+            <h4>To-Do List</h4>
+            <div class="form-control">
+                <input type="text" name="name" class="task-input" placeholder="e.g. Write homework" />
+                <button type="submit" class="btn submit-btn">Enter</button>
+            </div>
+            <div class="form-alert"></div>
+        </form>
 
-    <section class="tasks-container">
-        <p class="loading-text">Loading...</p>
-        <div class="tasks"></div>
-    </section>
+        <section class="tasks-container">
+            <p class="loading-text">Loading...</p>
+            <div class="tasks"></div>
+        </section>
+    </div>
+    <button id="open-popup">About Me</button>
+
+    <!-- Popup Modal -->
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span id="close-popup" class="close">&times;</span>
+            <p><strong>Mohammad Rammal</strong></p>
+            <p><a href="https://www.linkedin.com/in/mohammad-rammal/" target="_blank" rel="noopener noreferrer">LinkedIn
+                    Profile</a></p>
+            <p>mohammad.rammal@hotmail.com</p>
+        </div>
+
+    </div>
+
 
     <!-- axios -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"

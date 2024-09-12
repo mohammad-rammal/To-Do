@@ -4,7 +4,33 @@ const formDOM = document.querySelector('.task-form');
 const taskInputDOM = document.querySelector('.task-input');
 const formAlertDOM = document.querySelector('.form-alert');
 
+// Get the popup element
+const popup = document.getElementById('popup');
+const openPopupButton = document.getElementById('open-popup');
+const closePopupButton = document.getElementById('close-popup');
 
+// Function to open the popup
+const openPopup = () => {
+    popup.style.display = 'block';
+};
+
+// Function to close the popup
+const closePopup = () => {
+    popup.style.display = 'none';
+};
+
+// Event listener for opening the popup
+openPopupButton.addEventListener('click', openPopup);
+
+// Event listener for closing the popup
+closePopupButton.addEventListener('click', closePopup);
+
+// Close the popup if the user clicks anywhere outside of the popup
+window.addEventListener('click', (event) => {
+    if (event.target === popup) {
+        closePopup();
+    }
+});
 
 const showTasks = async () => {
     loadingDOM.style.visibility = 'visible';
