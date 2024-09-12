@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- favicon -->
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
+
+
+
+
+    <!-- Open Graph Meta Tags for Social Media -->
+    <meta name="title" content="To-Do">
+    <meta name="description" content="Task Manager helps you organize and prioritize your tasks effortlessly.">
+    <meta property="og:image"
+        content="https://res.cloudinary.com/dftxzx2zc/image/upload/v1726163289/fndfwhb2sufa1gk2bkhi.jpg">
+    <!-- <meta property="og:url" content="https://yourwebsite.com/your-page-url"> -->
+    <meta property="og:type" content="website">
+
+    <!-- normalize css -->
+    <link rel="stylesheet" href="./normalize.css" />
+    <!-- main css -->
+    <link rel="stylesheet" href="./main.css" />
+    <title>To-Do List</title>
+</head>
+
+<body>
+    <form class="task-form">
+        <h4>To-Do List</h4>
+        <div class="form-control">
+            <input type="text" name="name" class="task-input" placeholder="e.g. Write homework" />
+            <button type="submit" class="btn submit-btn">Enter</button>
+        </div>
+        <div class="form-alert"></div>
+    </form>
+
+    <section class="tasks-container">
+        <p class="loading-text">Loading...</p>
+        <div class="tasks"></div>
+    </section>
+
+    <!-- axios -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+        integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./browser-app.js"></script>
+</body>
+
+</html>
